@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <windows.h>
 #include <stdlib.h>
 #include <cmath>
@@ -47,6 +47,8 @@ int main()
 	int Menu_Open;
 	int Menu_DG;
 	int Menu_Shop;
+	int Menu_Shop_Ur;
+	int Menu_Shop_Ur_Num;
 	long long int Menu_Luck;
 	int A1;
 	int A1_UR;
@@ -433,6 +435,53 @@ L1:
 		{
 		//UR商店
 		case 1:
+			system("cls");
+			cout << "UR商店:" << endl;
+			cout << "1.食物购买()." << endl;
+			cout << "2.饮料购买()." << endl;
+			cout << "3.卡片兑换(1张UR换3张SSR)." << endl;
+			cout << "输入栏: ";
+			cin >> Menu_Shop_Ur;
+			switch (Menu_Shop_Ur)
+			{
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				system("cls");
+				cout << "卡片兑换UR→SSR面板." << endl;
+				cout << "您需要使用几张UR?(1:3)" << endl;
+				cout << "输入栏: ";
+				cin >> Menu_Shop_Ur_Num;
+				cout << "检测您是否拥有[" << Menu_Shop_Ur_Num << "]张UR卡中." << endl;
+				if (UR < Menu_Shop_Ur_Num)
+				{
+					cout << "您的UR卡片不足[" << Menu_Shop_Ur_Num << "]张" << endl;
+					system("pause");
+					system("cls");
+					goto L1;
+				}
+				else if (UR >= Menu_Shop_Ur_Num)
+				{
+					cout << "您的UR卡足够兑换,正在为您兑换,请稍等." << endl;
+					Sleep(1000);
+				}
+				for (int i = 0; i < Menu_Shop_Ur_Num; i++)
+				{
+					system("cls");
+					UR -= 1;
+					SSR += 3;
+					cout << "您使用了1张UR卡,获得了3张SSR卡." << endl;
+					cout << "您还想使用: " << Menu_Shop_Ur_Num - i << "次." << endl;
+					Sleep(1000);
+				}
+				cout << "叮!" << endl;
+				cout << "本次共计获得SSR卡: " << Menu_Shop_Ur_Num * 3 << "张." << endl;
+				cout << "本次共计消耗UR卡: " << Menu_Shop_Ur_Num << "张." << endl;
+				system("pause");
+				system("cls");
+			}
 			break;
 		//SSR商店
 		case 2:
